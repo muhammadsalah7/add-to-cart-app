@@ -3,6 +3,8 @@ import {
   getDatabase,
   ref,
   push,
+  onValue,
+  remove,
 } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-database.js";
 const appSettings = {
   databaseURL:
@@ -20,12 +22,47 @@ addBtn.addEventListener("click", () => {
   let inputValue = inputField.value;
   push(shoppingListInDB, inputValue);
   clearInputField();
-  appendItemToShoppingList(inputValue);
 });
-function appendItemToShoppingList(itemValue) {
-  shoppingList.innerHTML += `<li>${itemValue}</li>`;
+function appendItemToShoppingList(item) {
+  let itemID = item[0];
+  let itemValue = item[1];
+  let newEl = document.createElement("li");
+  newEl.classList.add(
+    "bg-[#FFFDF8]",
+    "shadow-md",
+    "p-4",
+    "rounded-lg",
+    "text-[#432000]",
+    "font-[Rubik]",
+    "flex-grow",
+    "text-center",
+    "text-xl"
+  );
+  newEl.textContent = itemValue;
+  newEl.addEventListener("click", () => {
+    let exactLocationOfItemInDB = ref(database, `shoppingList/${itemID}`);
+    remove(exactLocationOfItemInDB);
+  });
+  shoppingList.append(newEl);
 }
 
+onValue(shoppingListInDB, (snapshot) => {
+  clearShoppingList();
+
+  let itemsArray = Object.entries(snapshot.val());
+  console.log(itemsArray);
+
+  for (let i = 0; i < itemsArray.length; i++) {
+    const currentItem = itemsArray[i];
+    let currentItemID = currentItem[0];
+    let currentItemValue = currentItem[1];
+
+    appendItemToShoppingList(currentItem);
+  }
+});
+function clearShoppingList() {
+  shoppingList.innerHTML = "";
+}
 function clearInputField() {
   inputField.value = "";
 }
