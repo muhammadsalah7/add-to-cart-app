@@ -50,7 +50,6 @@ onValue(shoppingListInDB, (snapshot) => {
   clearShoppingList();
 
   let itemsArray = Object.entries(snapshot.val());
-  console.log(itemsArray);
 
   for (let i = 0; i < itemsArray.length; i++) {
     const currentItem = itemsArray[i];
