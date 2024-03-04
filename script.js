@@ -28,16 +28,16 @@ function appendItemToShoppingList(item) {
   let itemValue = item[1];
   let newEl = document.createElement("li");
   newEl.classList.add(
-    "bg-[#FFFDF8]",
+    "bg-[#DCE1EB]",
     "shadow-md",
     "p-4",
     "rounded-lg",
-    "text-[#432000]",
-    "text-xl",
-    "font-[Rubik]",
+    "text-[#131314]",
+    "text-2xl",
+    "font-[Caveat]",
     "flex-grow",
     "text-center",
-    "hover:bg-[#FFECC7]",
+    "hover:bg-[#C2F7FF]",
     "hover:cursor-pointer"
   );
   newEl.textContent = itemValue;
