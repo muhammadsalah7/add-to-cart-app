@@ -33,8 +33,8 @@ function appendItemToShoppingList(item) {
     "p-4",
     "rounded-lg",
     "text-[#131314]",
-    "text-2xl",
-    "font-[Kalam]",
+    "text-xl",
+    "font-[Rubik]",
     "flex-grow",
     "text-center",
     "hover:bg-[#C2F7FF]",
@@ -66,3 +66,10 @@ function clearShoppingList() {
 function clearInputField() {
   inputField.value = "";
 }
+const toggleButton = document.getElementById("toggle");
+const toggleLabel = document.getElementById("toggle-label");
+const body = document.body;
+toggleButton.addEventListener("click", () => {
+  body.classList.toggle("bg-[#131314]");
+  toggleLabel.classList.toggle("text-white");
+});

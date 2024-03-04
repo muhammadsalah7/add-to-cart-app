@@ -7,6 +7,12 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
+      href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
       href="https://fonts.googleapis.com/css2?family=Kalam:wght@300;400;700&display=swap"
       rel="stylesheet"
     />
@@ -45,11 +51,11 @@
         type="text"
         id="input-field"
         placeholder="Bread"
-        class="p-4 text-center bg-[#DCE1EB] text-black rounded-lg text-2xl border-0 border-none font-[Kalam] my-3"
+        class="p-4 text-center bg-[#DCE1EB] text-black rounded-lg text-2xl border-0 border-none font-[Rubik] my-3"
       />
       <button
         id="add-button"
-        class="p-4 text-center bg-gradient-to-r from-cyan-500 to-violet-500 text-[#FDFDFD] rounded-lg text-2xl border-0 border-none font-[Kalam] mb-4 hover:bg-gradient-to-r hover:from-violet-500 hover:to-cyan-500 hover:cursor-pointer"
+        class="p-4 text-center bg-gradient-to-r from-cyan-500 to-violet-500 text-[#FDFDFD] rounded-lg text-2xl border-0 border-none font-[Rubik] mb-4 hover:bg-gradient-to-r hover:from-violet-500 hover:to-cyan-500 hover:cursor-pointer"
       >
         Add to cart
       </button>
@@ -57,6 +63,10 @@
         id="shopping-list"
         class="flex flex-wrap p-0 list-none gap-3 text-2xl font-[Kalam] text-gray-400"
       ></ul>
+      <label id="toggle-label" class="font-[Rubik] text-sm" for="toggle"
+        >click to switch between light/dark mode</label
+      >
+      <input type="checkbox" id="toggle" />
     </div>
   </body>
 </html>

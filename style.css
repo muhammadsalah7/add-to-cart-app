@@ -2,3 +2,18 @@
   margin: 0;
   padding: 0;
 }
+
+/* Toggle button styles */
+
+#toggle {
+  top: 20px;
+  left: 20px;
+  width: 40px;
+  height: 20px;
+  /* Increased z-index to ensure click priority */
+  z-index: 2;
+  opacity: 0; /* Hide the actual radio button */
+}
+#toggle-label {
+  padding: 20px;
+}
