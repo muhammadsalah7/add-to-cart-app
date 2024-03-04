@@ -34,7 +34,7 @@ function appendItemToShoppingList(item) {
     "rounded-lg",
     "text-[#131314]",
     "text-2xl",
-    "font-[Caveat]",
+    "font-[Kalam]",
     "flex-grow",
     "text-center",
     "hover:bg-[#C2F7FF]",
@@ -54,9 +54,6 @@ onValue(shoppingListInDB, (snapshot) => {
     clearShoppingList();
     for (let i = 0; i < itemsArray.length; i++) {
       const currentItem = itemsArray[i];
-      let currentItemID = currentItem[0];
-      let currentItemValue = currentItem[1];
-
       appendItemToShoppingList(currentItem);
     }
   } else {
