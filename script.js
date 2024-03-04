@@ -18,6 +18,15 @@ const addBtn = document.getElementById("add-button");
 const inputField = document.getElementById("input-field");
 const shoppingList = document.getElementById("shopping-list");
 
+inputField.addEventListener("keypress", (event) => {
+  // Check if the pressed key is Enter (key "Enter")
+  if (event.key === "Enter") {
+    // Call the existing function that handles adding an item
+    let inputValue = inputField.value;
+    push(shoppingListInDB, inputValue);
+    clearInputField();
+  }
+});
 addBtn.addEventListener("click", () => {
   let inputValue = inputField.value;
   push(shoppingListInDB, inputValue);
