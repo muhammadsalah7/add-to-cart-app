@@ -14,6 +14,7 @@ const appSettings = {
 const app = initializeApp(appSettings);
 const database = getDatabase(app);
 const shoppingListInDB = ref(database, "shoppingList");
+
 const addBtn = document.getElementById("add-button");
 const inputField = document.getElementById("input-field");
 const shoppingList = document.getElementById("shopping-list");
@@ -26,6 +27,7 @@ inputField.addEventListener("keypress", (event) => {
     clearInputField();
   }
 });
+
 addBtn.addEventListener("click", () => {
   // Check if the input field value is not empty
   if (inputField.value.trim() !== "") {
@@ -80,7 +82,37 @@ function clearInputField() {
 const toggleButton = document.getElementById("toggle");
 const toggleLabel = document.getElementById("toggle-label");
 const body = document.body;
+
+// Initial theme check (optional):
+// Initial theme check (optional):
+const savedTheme = localStorage.getItem("theme");
+let theme = savedTheme || "light"; // Set default theme to light if not saved
+
+const fontColorLight = "#333"; // Light theme font color
+const fontColorDark = "#ddd"; // Dark theme font color
+
+// Toggle button event listener:
 toggleButton.addEventListener("click", () => {
-  body.classList.toggle("bg-[#131314]");
-  toggleLabel.classList.toggle("text-white");
+  if (theme === "light") {
+    localStorage.setItem("theme", "dark");
+    theme = "dark";
+  } else {
+    localStorage.setItem("theme", "light");
+    theme = "light";
+  }
+
+  applyTheme(theme); // Apply the theme based on the updated value
 });
+
+// Function to apply theme based on stored preference:
+function applyTheme(theme) {
+  body.classList.remove("bg-white", "bg-[#131314]"); // Remove both body classes
+  body.classList.add(theme === "light" ? "bg-white" : "bg-[#131314]");
+
+  // Apply font color based on theme
+  document.body.style.color =
+    theme === "light" ? fontColorLight : fontColorDark;
+}
+
+// Apply theme on initial load:
+applyTheme(theme);
