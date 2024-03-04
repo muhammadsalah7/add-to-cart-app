@@ -6,6 +6,7 @@ import {
   onValue,
   remove,
 } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-database.js";
+
 const appSettings = {
   databaseURL:
     "https://playground-99fa1-default-rtdb.europe-west1.firebasedatabase.app/",
@@ -13,7 +14,6 @@ const appSettings = {
 const app = initializeApp(appSettings);
 const database = getDatabase(app);
 const shoppingListInDB = ref(database, "shoppingList");
-
 const addBtn = document.getElementById("add-button");
 const inputField = document.getElementById("input-field");
 const shoppingList = document.getElementById("shopping-list");
@@ -33,10 +33,12 @@ function appendItemToShoppingList(item) {
     "p-4",
     "rounded-lg",
     "text-[#432000]",
+    "text-xl",
     "font-[Rubik]",
     "flex-grow",
     "text-center",
-    "text-xl"
+    "hover:bg-[#FFECC7]",
+    "hover:cursor-pointer"
   );
   newEl.textContent = itemValue;
   newEl.addEventListener("click", () => {
@@ -47,16 +49,18 @@ function appendItemToShoppingList(item) {
 }
 
 onValue(shoppingListInDB, (snapshot) => {
-  clearShoppingList();
+  if (snapshot.exists()) {
+    let itemsArray = Object.entries(snapshot.val());
+    clearShoppingList();
+    for (let i = 0; i < itemsArray.length; i++) {
+      const currentItem = itemsArray[i];
+      let currentItemID = currentItem[0];
+      let currentItemValue = currentItem[1];
 
-  let itemsArray = Object.entries(snapshot.val());
-
-  for (let i = 0; i < itemsArray.length; i++) {
-    const currentItem = itemsArray[i];
-    let currentItemID = currentItem[0];
-    let currentItemValue = currentItem[1];
-
-    appendItemToShoppingList(currentItem);
+      appendItemToShoppingList(currentItem);
+    }
+  } else {
+    shoppingList.innerHTML = "No items here... yet";
   }
 });
 function clearShoppingList() {
