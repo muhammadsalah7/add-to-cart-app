@@ -24,7 +24,8 @@ Check out the live demo of the Add to Cart App [here](https://add-to-cart-app-du
 
 ## Screenshot
 
-![Add to Cart App Screenshot](assets/sslight.jpg) ![Add to Cart App Screenshot](assets/ssdark.jpg)
+![Add to Cart App Screenshot](assets/sslight.jpg) 
+![Add to Cart App Screenshot](assets/ssdark.jpg)
 
 ## How to Use
 
