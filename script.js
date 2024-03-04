@@ -19,18 +19,20 @@ const inputField = document.getElementById("input-field");
 const shoppingList = document.getElementById("shopping-list");
 
 inputField.addEventListener("keypress", (event) => {
-  // Check if the pressed key is Enter (key "Enter")
-  if (event.key === "Enter") {
-    // Call the existing function that handles adding an item
-    let inputValue = inputField.value;
+  // Check if the pressed key is Enter and the value is not empty
+  if (event.key === "Enter" && inputField.value.trim() !== "") {
+    let inputValue = inputField.value.trim(); // Trim leading/trailing spaces
     push(shoppingListInDB, inputValue);
     clearInputField();
   }
 });
 addBtn.addEventListener("click", () => {
-  let inputValue = inputField.value;
-  push(shoppingListInDB, inputValue);
-  clearInputField();
+  // Check if the input field value is not empty
+  if (inputField.value.trim() !== "") {
+    let inputValue = inputField.value.trim();
+    push(shoppingListInDB, inputValue);
+    clearInputField();
+  }
 });
 function appendItemToShoppingList(item) {
   let itemID = item[0];
